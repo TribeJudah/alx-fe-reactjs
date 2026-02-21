@@ -11,7 +11,7 @@ export default function HomePage() {
     try {
       setData(recipeData);
     } catch (error) {
-      setError("Oops! Something went wrong");
+      setError("Something went wrong");
       console.error(error);
     } finally {
       setIsLoading(false);
