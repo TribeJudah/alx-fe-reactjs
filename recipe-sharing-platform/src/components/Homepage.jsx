@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import recipeData from "../data.json";
 
 export default function HomePage() {
@@ -10,14 +11,14 @@ export default function HomePage() {
     try {
       setData(recipeData);
     } catch (error) {
-      setError("Oops! Error");
+      setError("Oops! Something went wrong");
       console.error(error);
     } finally {
       setIsLoading(false);
     }
   }, []);
 
-  if (isLoading) return <p>Loading recipes...</p>;
+  if (isLoading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
   return (
@@ -29,7 +30,7 @@ export default function HomePage() {
           <Link
             key={item.id}
             to={`/recipe/${item.id}`}
-            className="border rounded p-4 shadow hover:border-blue-500 block"
+            className="border rounded p-4 shadow hover:border-blue-400 block"
           >
             <img
               src={item.image}
@@ -39,7 +40,7 @@ export default function HomePage() {
             <h2 className="text-xl font-bold mt-2 text-blue-500">
               {item.title}
             </h2>
-            <p className="text-gray-600 text-base">{item.summary}</p>
+            <p className="text-gray-700 text-base">{item.summary}</p>
           </Link>
         ))}
       </div>
